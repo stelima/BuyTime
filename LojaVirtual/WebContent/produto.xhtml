@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Gestão de Produtos</title>
+</h:head>
+<h:body>
+	<h2>Gestão de Produtos</h2>
+	<h:form>
+		<h:messages/>
+		<h:panelGrid columns="3">
+			<h:outputLabel>ID: </h:outputLabel>
+			<h:inputText id="txtId" name="txtId" value="${produtoMB.prodAtual.id}" readonly="true"/>
+			<h:message for="txtId"/>
+			
+			<h:outputLabel>Nome: </h:outputLabel>
+			<h:inputText id="txtName" name="txtNome" value="${produtoMB.prodAtual.nome}"
+						 validatorMessage="O nome deve conter entre 5 e 200 caracteres">
+				<f:validateLength minimum="5" maximum="200"/>
+			</h:inputText>
+			<h:message for="txtName"/>
+			
+			<h:outputLabel>Descricao: </h:outputLabel>
+			<h:inputText id="txtDescricao" name="txtDescricao" value="${produtoMB.prodAtual.descricao}"/>
+			<h:message for="txtDescricao" closable="true"/>
+			
+			<h:outputLabel>Preco: </h:outputLabel>
+			<h:inputText id="txtPreco" name="txtPreco" value="${produtoMB.prodAtual.preco}"/>
+			<h:message for="txtPreco"/>
+			
+			<h:panelGroup>
+				<p:commandButton  value="Inserir" action="${produtoMB.inserir}"/>
+				<p:commandButton  value="Atualizar" action="${produtoMB.atualizar}"/>												
+			</h:panelGroup>
+			<p:commandButton  value="Pesquisar Todos" action="${produtoMB.pesquisarTodos}"/>
+			<p:commandButton  value="Pesquisar" action="${produtoMB.pesquisar}"/>
+			
+		</h:panelGrid>
+		<p:dataTable	value="${produtoMB.produtos}" 
+						var="prod" 
+						border="2"
+						>	
+			
+			<p:column headerText="ID">
+				<h:outputText value="#{prod.id}" />
+			</p:column>
+			
+			<p:column headerText="Nome">
+				<h:outputText value="#{prod.nome}" />
+			</p:column>
+			
+			<p:column headerText="Descricao">
+				<h:outputText value="#{prod.descricao}" />
+			</p:column>
+			
+			<p:column headerText="Preco">
+				<h:outputText value="#{prod.preco}" />
+			</p:column>
+			
+			<p:column>
+				<p:commandButton name="cmd" value="Remover" 
+								 action="${produtoMB.remover(prod)}" 
+									/>
+				<f:facet name="header">Ação</f:facet>
+			</p:column>			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
