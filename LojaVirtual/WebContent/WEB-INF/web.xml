@@ -13,4 +13,10 @@
 		<url-pattern>
 		*.xhtml</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Definição do Tema da aplicação do PrimeFaces -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>vader</param-value>
+	</context-param>
 </web-app>
