@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+	
+	<ui:define name="menu">
+		<ui:include src="/includes/menuPrincipal.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<h:panelGrid columns="3">
+
+				<h:outputLabel value="ID: " />
+				<h:inputText id="txtId" name="txtId"
+					value="${produtoMB.prodAtual.id}" readonly="true" />
+				<h:message for="txtId" />
+
+				<h:outputLabel value="Nome: " />
+				<h:inputText id="txtName" name="txtNome"
+					value="${produtoMB.prodAtual.nome}"
+					validatorMessage="O nome deve conter entre 5 e 200 caracteres" />
+				<h:message for="txtName" />
+
+				<h:outputLabel value="Descricao: " />
+				<h:inputText id="txtDescricao" name="txtDescricao"
+					value="${produtoMB.prodAtual.descricao}" />
+				<h:message for="txtDescricao" closable="true" />
+
+				<h:outputLabel value="Preco: " />
+				<h:inputText id="txtPreco" name="txtPreco"
+					value="${produtoMB.prodAtual.preco}" />
+				<h:message for="txtPreco" />
+
+			</h:panelGrid>
+			<h:panelGrid columns="4">
+				<p:commandButton value="Inserir" action="${produtoMB.inserir}" />
+				<p:commandButton value="Atualizar" action="${produtoMB.atualizar}" />
+				<p:commandButton value="Pesquisar Todos"
+					action="${produtoMB.pesquisarTodos}" />
+				<p:commandButton value="Pesquisar" action="${produtoMB.pesquisar}" />
+			</h:panelGrid>
+		</h:form>
+		<h:form id="frmProListagem">
+			<p:dataTable id="tblProdutos"
+				emptyMessage="Nenhum Registro Encontrado" paginator="true" rows="10"
+				value="${produtoMB.produtos}" var="prod">
+
+				<f:facet name="header">
+					Lista de Produtos
+				</f:facet>
+
+				<p:column headerText="ID: " sortBy="#{prod.id}"
+					filterBy="#{prod.id}">
+					<h:outputText value="#{prod.id}" />
+				</p:column>
+
+				<p:column headerText="Nome: " sortBy="#{prod.nome}"
+					filterBy="#{prod.nome}">
+					<h:outputText value="#{prod.nome}" />
+				</p:column>
+
+				<p:column headerText="Descrição: " sortBy="#{prod.descricao}"
+					filterBy="#{prod.descricao}">
+					<h:outputText value="#{prod.descricao}" />
+				</p:column>
+
+				<p:column headerText="Preço: " sortBy="#{prod.preco}"
+					filterBy="#{prod.preco}">
+					<h:outputText value="#{prod.preco}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

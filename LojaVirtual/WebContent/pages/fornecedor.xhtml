@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/includes/menuPrincipal.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h:form>
+			<h:panelGrid columns="3">
+
+				<h:outputLabel value="Nome do Fornecedor: " />
+				<h:inputText id="txtName" name="txtNome" value="" />
+				<h:message for="txtName" />
+
+				<h:outputLabel value="CNPJ: " />
+				<h:inputText id="txtCNPJ" name="txtCNPJ" value="" />
+				<h:message />
+
+				<h:outputLabel value="Endereço: " />
+				<h:inputText id="txtEndereco" name="txtEndereco" value="" />
+				<h:message />
+
+				<h:outputLabel value="Telefone: " />
+				<h:inputText id="txtTelefone" name="txtTelefone" value="" />
+				<h:message />
+
+				<h:outputLabel value="Email: " />
+				<h:inputText id="txtEmail" name="txtEmail" value="" />
+				<h:message />
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="4">
+				<p:commandButton value="Inserir"  />
+				<p:commandButton value="Atualizar"  />
+				<p:commandButton value="Pesquisar Todos"  />
+				<p:commandButton value="Pesquisar" />
+			</h:panelGrid>
+		</h:form>
+
+		<h:form id="frmForListagem">
+			<p:dataTable id="tblFornecedor"
+				emptyMessage="Nenhum Registro Encontrado" paginator="true" rows="10"
+				value="" var="forn">
+
+				<f:facet name="header">
+					Lista de Fornecedores
+				</f:facet>
+
+				<p:column headerText="ID: " sortBy=""
+					filterBy="">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="Nome: " sortBy=""
+					filterBy="">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="CNPJ: " sortBy=""
+					filterBy="">
+					<h:outputText value="" />
+				</p:column>
+
+				<p:column headerText="Endereço: " sortBy=""
+					filterBy="">
+					<h:outputText value="" />
+				</p:column>
+				
+				<p:column headerText="Telefone: " sortBy=""
+					filterBy="">
+					<h:outputText value="" />
+				</p:column>
+				
+				<p:column headerText="E-mail: " sortBy=""
+					filterBy="">
+					<h:outputText value="" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
