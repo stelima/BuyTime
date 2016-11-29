@@ -14,74 +14,74 @@
 	<ui:define name="conteudo">
 
 		<h:form>
-			<h:panelGrid columns="3">
+			<h:panelGrid columns="2">
 
 				<h:outputLabel value="Nome do Fornecedor: " />
-				<h:inputText id="txtName" name="txtNome" value="" />
-				<h:message for="txtName" />
+				<h:inputText id="txtName" name="txtNome"
+				value="#{MBFornecedor.fornAtual.nome}" />
 
 				<h:outputLabel value="CNPJ: " />
-				<h:inputText id="txtCNPJ" name="txtCNPJ" value="" />
-				<h:message />
+				<h:inputText id="txtCNPJ" name="txtCNPJ"
+				value="#{MBFornecedor.fornAtual.cnpj}" />
 
 				<h:outputLabel value="Endereço: " />
-				<h:inputText id="txtEndereco" name="txtEndereco" value="" />
-				<h:message />
+				<h:inputText id="txtEndereco" name="txtEndereco"
+				value="#{MBFornecedor.fornAtual.endereco}" />
 
 				<h:outputLabel value="Telefone: " />
-				<h:inputText id="txtTelefone" name="txtTelefone" value="" />
-				<h:message />
+				<h:inputText id="txtTelefone" name="txtTelefone"
+				value="#{MBFornecedor.fornAtual.telefone}" />
 
 				<h:outputLabel value="Email: " />
-				<h:inputText id="txtEmail" name="txtEmail" value="" />
-				<h:message />
+				<h:inputText id="txtEmail" name="txtEmail"
+				value="#{MBFornecedor.fornAtual.email}" />
 
 			</h:panelGrid>
 
 			<h:panelGrid columns="4">
-				<p:commandButton value="Inserir"  />
-				<p:commandButton value="Atualizar"  />
-				<p:commandButton value="Excluir"  />
+				<p:commandButton value="Inserir" action="#{MBFornecedor.inserir}" />
+				<p:commandButton value="Atualizar" action="#{MBFornecedor.alterar}" />
+				<p:commandButton value="Excluir" action="#{MBFornecedor.remover}" />
 			</h:panelGrid>
 		</h:form>
 
 		<h:form id="frmForListagem">
 			<p:dataTable id="tblFornecedor"
 				emptyMessage="Nenhum Registro Encontrado" paginator="true" rows="10"
-				value="" var="forn">
+				value="#{MBFornecedor.tabela}" var="forn">
 
 				<f:facet name="header">
 					Lista de Fornecedores
 				</f:facet>
 
-				<p:column headerText="ID: " sortBy=""
-					filterBy="">
-					<h:outputText value="" />
+				<p:column headerText="ID: " sortBy="#{forn.id}"
+					filterBy="#{forn.id}">
+					<h:outputText value="#{forn.id}" />
 				</p:column>
 
-				<p:column headerText="Nome: " sortBy=""
-					filterBy="">
-					<h:outputText value="" />
+				<p:column headerText="Nome: " sortBy="#{forn.nome}"
+					filterBy="#{forn.nome}">
+					<h:outputText value="#{forn.nome}" />
 				</p:column>
 
-				<p:column headerText="CNPJ: " sortBy=""
-					filterBy="">
-					<h:outputText value="" />
+				<p:column headerText="CNPJ: " sortBy="#{forn.cnpj}"
+					filterBy="#{forn.cnpj}">
+					<h:outputText value="#{forn.cnpj}" />
 				</p:column>
 
-				<p:column headerText="Endereço: " sortBy=""
-					filterBy="">
-					<h:outputText value="" />
+				<p:column headerText="Endereço: " sortBy="#{forn.endereco}"
+					filterBy="#{forn.endereco}">
+					<h:outputText value="#{forn.endereco}" />
 				</p:column>
 				
-				<p:column headerText="Telefone: " sortBy=""
-					filterBy="">
-					<h:outputText value="" />
+				<p:column headerText="Telefone: " sortBy="#{forn.telefone}"
+					filterBy="#{forn.telefone}">
+					<h:outputText value="#{forn.telefone}" />
 				</p:column>
 				
-				<p:column headerText="E-mail: " sortBy=""
-					filterBy="">
-					<h:outputText value="" />
+				<p:column headerText="E-mail: " sortBy="#{forn.email}"
+					filterBy="#{forn.email}">
+					<h:outputText value="#{forn.email}" />
 				</p:column>
 
 			</p:dataTable>

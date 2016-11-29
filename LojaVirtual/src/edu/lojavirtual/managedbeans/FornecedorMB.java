@@ -18,7 +18,7 @@ import edu.lojavirtual.entidades.Fornecedor;
 public class FornecedorMB implements Serializable{
 	
 	private ListDataModel<Fornecedor> tabela;
-	
+
 	private Fornecedor fornAtual;
 	private FornecedorDAO fornDAO;
 	private List<Fornecedor> fornecedores;
@@ -87,6 +87,14 @@ public class FornecedorMB implements Serializable{
 
 	public void setFornecedor(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
+	}
+	
+	public ListDataModel<Fornecedor> getTabela() {
+		return tabela;
+	}
+
+	public void setTabela(ListDataModel<Fornecedor> tabela) {
+		this.tabela = tabela;
 	}
 	
 }
