@@ -13,6 +13,8 @@ import edu.lojavirtual.dao.FornecedorDAO;
 import edu.lojavirtual.dao.FornecedorDAOImpl;
 import edu.lojavirtual.entidades.Fornecedor;
 
+
+@SuppressWarnings("serial")
 @ManagedBean(name = "MBFornecedor")
 @SessionScoped
 public class FornecedorMB implements Serializable{
