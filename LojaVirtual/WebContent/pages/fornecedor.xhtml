@@ -13,16 +13,18 @@
 
 	<ui:define name="conteudo">
 
-		<h:form >
-			<h:panelGrid columns="3">
+		<h:form id="frmAtt" >
+			<h:panelGrid id="pnlGrid" columns="3">
 
 				<h:outputLabel value="Nome do Fornecedor: " />
 				<h:inputText id="txtName" name="txtNome"
 				value="#{MBFornecedor.fornAtual.nome}" />
-				<p:commandButton value="Pesquisar" actionListener="#{MBFornecedor.pesquisar}" oncomplete= "value=#{MBFornecedor.fornAtual.cnpj} id=txtCNPJ" />
+				<p:commandButton value="Pesquisar" actionListener="#{MBFornecedor.pesquisar}"  />
 			</h:panelGrid>
 			
-			<h:panelGrid columns="2">
+			<!-- update=":frmAtt:txtCNPJ :frmAtt:txtEndereco :frmAtt:txtTelefone :frmAtt:txtEmail" -->
+			
+			<h:panelGrid  columns="2">
 				<h:outputLabel value="CNPJ: " />
 				<h:inputText id="txtCNPJ" name="txtCNPJ"
 				value="#{MBFornecedor.fornAtual.cnpj}" />
@@ -41,16 +43,16 @@
 
 			</h:panelGrid>
 
-			<h:panelGrid columns="4">
-				<p:commandButton value="Inserir" actionListener="#{MBFornecedor.inserir}" update=":frmForListagem:tblFornecedor" />
-				<p:commandButton value="Atualizar Tabela" actionListener="#{MBFornecedor.listar}" update=":frmForListagem:tblFornecedor" />
-				<p:commandButton value="Excluir" actionListener="#{MBFornecedor.remover}" update=":frmForListagem:tblFornecedor" />
+			<h:panelGrid columns="2">
+				<p:commandButton value="Inserir"  actionListener="#{MBFornecedor.inserir}" update=":frmForListagem:tblFornecedor" />
+				<p:commandButton value="Atualizar Tabela"  actionListener="#{MBFornecedor.listar}" update=":frmForListagem:tblFornecedor" />
 			</h:panelGrid>
 		</h:form>
 
 		<h:form id="frmForListagem">
-			<p:dataTable id="tblFornecedor"
-				emptyMessage="Nenhum Registro Encontrado" paginator="true" rows="10"
+			
+			<p:dataTable id="tblFornecedor" 
+				emptyMessage="Nenhum Registro Encontrado" paginator="true" rows="8"
 				value="#{MBFornecedor.tabela}" var="forn">
 
 				<f:facet name="header">
@@ -85,6 +87,11 @@
 				<p:column headerText="E-mail: " sortBy="#{forn.email}"
 					filterBy="#{forn.email}">
 					<h:outputText value="#{forn.email}" />
+				</p:column>
+				
+				<p:column headerText="Opções">
+					<p:commandButton  icon="ui-icon-trash" actionListener="#{MBFornecedor.remover}" update=":frmForListagem:tblFornecedor"/>
+					<p:commandButton  icon="ui-icon-pencil" />
 				</p:column>
 
 			</p:dataTable>

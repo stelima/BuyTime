@@ -57,4 +57,14 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		em.close();
 		return produtos;
 	}
+
+	@Override
+	public List<Produto> listar() throws SQLException {
+		EntityManager em = JPAUtil.getEMF().createEntityManager();
+		TypedQuery<Produto> qry = em.createQuery("select p from Produto p", Produto.class);
+		List<Produto> produtos = new ArrayList<Produto>();
+		produtos.addAll(qry.getResultList());
+		em.close();
+		return produtos;
+	}
 }

@@ -52,7 +52,6 @@ public class FornecedorMB implements Serializable{
 	public void remover(Fornecedor f){
 		try {
 			fornDAO.remover(f.getId());
-			pesquisar();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

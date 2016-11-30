@@ -18,7 +18,7 @@ import edu.lojavirtual.dao.ProdutoDAO;
 import edu.lojavirtual.dao.ProdutoDAOImpl;
 import edu.lojavirtual.entidades.Produto;
 
-@ManagedBean
+@ManagedBean(name = "ProdutoMB")
 @SessionScoped
 public class ProdutoMB implements Serializable {
 
@@ -29,83 +29,62 @@ public class ProdutoMB implements Serializable {
 	private List<Produto> produtos;
 	
 	public ProdutoMB() { 
+		
 		prodAtual = new Produto();
 		setProdutos(new ArrayList<Produto>());
 		prodDAO = new ProdutoDAOImpl();
 		
 	}
 	
-	/*public void testaValidade(FacesContext ctx, UIComponent ui, Object o) { 
-		Date data = (Date) o;
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(data);
-		
-		if (cal.get(Calendar.YEAR) != 2014) { 
-			FacesMessage msg = new FacesMessage("A validade deve ser no ano de 2014", 
-												"Validade com o ano incorreto");
-			throw new ValidatorException( msg );
-		}
-	} */
-	
-	public String inserir() { 
+	public void inserir() { 
 		try {
 			prodDAO.inserir( prodAtual );
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		listar();
 	}
 	
-	public String carregar(Produto p) { 
-		prodAtual = p;
-		return "";		
+	public void carregar(Produto p) { 
+		prodAtual = p;		
 	}
 	
-	public String atualizar() {
+	public void atualizar() {
 		try {
 			prodDAO.atualizar( prodAtual.getId(), prodAtual );
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
 	}
 	
-	public String remover(Produto p) { 
+	public void remover(Produto p) { 
 		try {
 			prodDAO.remover( p.getId() );
-			pesquisar();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return "";
 	}
 	
-	public String pesquisar() { 
+	public void pesquisar() { 
 		try {
 			produtos = prodDAO.pesquisar( prodAtual.getNome() );
-//			if (produtos.size() > 0) { 
-//				prodAtual = produtos.get(0);
-//			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
 	}
 	
-	public String pesquisarTodos() { 
+	public void listar() { 
 		try {
-			produtos = prodDAO.pesquisar( "" );
+			produtos = prodDAO.listar();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
 	}
 
+	
+	
+	
+	
 	public Produto getProdAtual() {
 		return prodAtual;
 	}
