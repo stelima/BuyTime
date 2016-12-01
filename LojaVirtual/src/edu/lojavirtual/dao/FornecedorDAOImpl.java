@@ -62,11 +62,12 @@ public class FornecedorDAOImpl implements FornecedorDAO{
 
 	@Override
 	public List<Fornecedor> listar() throws SQLException {
+		List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 		EntityManager em = JPAUtil.getEMF().createEntityManager();
-		Query qry = em.createQuery("select f from Fornecedor f");
-		ArrayList<Fornecedor> lista = new ArrayList<Fornecedor>();
-		lista.addAll(qry.getResultList());
-		return lista;
+		TypedQuery<Fornecedor> qry = em.createQuery("select f from Fornecedor f", Fornecedor.class);
+		fornecedores.addAll(qry.getResultList());
+		em.close();
+		return fornecedores;
 	}
 
 }

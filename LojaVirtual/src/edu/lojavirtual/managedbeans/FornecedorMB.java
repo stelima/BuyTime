@@ -13,6 +13,8 @@ import edu.lojavirtual.dao.FornecedorDAO;
 import edu.lojavirtual.dao.FornecedorDAOImpl;
 import edu.lojavirtual.entidades.Fornecedor;
 
+
+@SuppressWarnings("serial")
 @ManagedBean(name = "MBFornecedor")
 @SessionScoped
 public class FornecedorMB implements Serializable{
@@ -50,7 +52,6 @@ public class FornecedorMB implements Serializable{
 	public void remover(Fornecedor f){
 		try {
 			fornDAO.remover(f.getId());
-			pesquisar();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
