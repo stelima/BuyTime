@@ -13,45 +13,50 @@
 
 	<ui:define name="conteudo">
 
-		<h:form id="frmAtt" >
+		<h:form id="frmAtt">
 			<h:panelGrid id="pnlGrid" columns="3">
 
 				<h:outputLabel value="Nome do Fornecedor: " />
 				<h:inputText id="txtName" name="txtNome"
-				value="#{MBFornecedor.fornAtual.nome}" />
-				<p:commandButton value="Pesquisar" actionListener="#{MBFornecedor.pesquisar}"  />
+					value="#{MBFornecedor.fornAtual.nome}" />
+				<p:commandButton value="Pesquisar"
+					actionListener="#{MBFornecedor.pesquisar}" />
 			</h:panelGrid>
-			
+
 			<!-- update=":frmAtt:txtCNPJ :frmAtt:txtEndereco :frmAtt:txtTelefone :frmAtt:txtEmail" -->
-			
-			<h:panelGrid  columns="2">
+
+			<h:panelGrid columns="2">
 				<h:outputLabel value="CNPJ: " />
 				<h:inputText id="txtCNPJ" name="txtCNPJ"
-				value="#{MBFornecedor.fornAtual.cnpj}" />
+					value="#{MBFornecedor.fornAtual.cnpj}" />
 
 				<h:outputLabel value="Endereço: " />
 				<h:inputText id="txtEndereco" name="txtEndereco"
-				value="#{MBFornecedor.fornAtual.endereco}" />
+					value="#{MBFornecedor.fornAtual.endereco}" />
 
 				<h:outputLabel value="Telefone: " />
 				<h:inputText id="txtTelefone" name="txtTelefone"
-				value="#{MBFornecedor.fornAtual.telefone}" />
+					value="#{MBFornecedor.fornAtual.telefone}" />
 
 				<h:outputLabel value="Email: " />
 				<h:inputText id="txtEmail" name="txtEmail"
-				value="#{MBFornecedor.fornAtual.email}" />
+					value="#{MBFornecedor.fornAtual.email}" />
 
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
-				<p:commandButton value="Inserir"  actionListener="#{MBFornecedor.inserir}" update=":frmForListagem:tblFornecedor" />
-				<p:commandButton value="Atualizar Tabela"  actionListener="#{MBFornecedor.listar}" update=":frmForListagem:tblFornecedor" />
+				<p:commandButton value="Inserir"
+					actionListener="#{MBFornecedor.inserir}"
+					update=":frmForListagem:tblFornecedor" />
+				<p:commandButton value="Atualizar Tabela"
+					actionListener="#{MBFornecedor.listar}"
+					update=":frmForListagem:tblFornecedor" />
 			</h:panelGrid>
 		</h:form>
 
 		<h:form id="frmForListagem">
-			
-			<p:dataTable id="tblFornecedor" 
+
+			<p:dataTable id="tblFornecedor"
 				emptyMessage="Nenhum Registro Encontrado" paginator="true" rows="8"
 				value="#{MBFornecedor.tabela}" var="forn">
 
@@ -78,20 +83,22 @@
 					filterBy="#{forn.endereco}">
 					<h:outputText value="#{forn.endereco}" />
 				</p:column>
-				
+
 				<p:column headerText="Telefone: " sortBy="#{forn.telefone}"
 					filterBy="#{forn.telefone}">
 					<h:outputText value="#{forn.telefone}" />
 				</p:column>
-				
+
 				<p:column headerText="E-mail: " sortBy="#{forn.email}"
 					filterBy="#{forn.email}">
 					<h:outputText value="#{forn.email}" />
 				</p:column>
-				
+
 				<p:column headerText="Opções">
-					<p:commandButton  icon="ui-icon-trash" actionListener="#{MBFornecedor.remover}" update=":frmForListagem:tblFornecedor"/>
-					<p:commandButton  icon="ui-icon-pencil" />
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{MBFornecedor.remover}"
+						update=":frmForListagem:tblFornecedor" />
+					<p:commandButton icon="ui-icon-pencil" />
 				</p:column>
 
 			</p:dataTable>

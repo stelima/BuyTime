@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/modeloSistema.xhtml">
-	
+
 	<ui:define name="menu">
 		<ui:include src="/includes/menuPrincipal.xhtml" />
 	</ui:define>
@@ -29,7 +29,9 @@
 			</h:panelGrid>
 			<h:panelGrid columns="3">
 				<p:commandButton value="Inserir" action="#{ProdutoMB.inserir}" />
-				<p:commandButton value="Atualizar Tabela" actionListener="#{ProdutoMB.listar}" update=":frmProListagem:tblProdutos"/>
+				<p:commandButton value="Atualizar Tabela"
+					actionListener="#{ProdutoMB.listar}"
+					update=":frmProListagem:tblProdutos" />
 				<p:commandButton value="Excluir" />
 			</h:panelGrid>
 		</h:form>
@@ -48,7 +50,7 @@
 				</p:column>
 
 				<p:column headerText="Nome: " sortBy="#{prod.nome}"
-					filterBy="#{prod.nome}" >
+					filterBy="#{prod.nome}">
 					<h:outputText value="#{prod.nome}" />
 				</p:column>
 

@@ -80,10 +80,6 @@ public class ProdutoMB implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
-	
 	
 	public Produto getProdAtual() {
 		return prodAtual;
