@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+	
+	<ui:define name="menu">
+		<ui:include src="/includes/menuPrincipal.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="produtoForm">
+		<p:fieldset id="carrinho" legend="Carrinho de compras" style="margin-top:20px">
+		<h:panelGrid columns="2">
+		
+		<h:outputLabel value="Produto: " />
+		<h:selectOneListbox id="listBox"  
+ 			value="#{VendaMB.vendaAtual.prodAtual}">  
+ 			 <f:selectItems  
+  			 value="#{ProdutoMB.prodAtual.nome}" />  
+		</h:selectOneListbox> 
+		
+		<h:outputLabel value="Quantidade: " />
+				<h:inputText id="txtQtd" name="txtQtd"
+					value="${VendaMB.vendaAtual.quantidade}" />
+					
+		<h:outputLabel value="Data: " />
+				<p:calendar value="#{VendaMB.vendaAtual.dataVenda}" pattern="dd/MM/yyyy"/>
+				
+    	<h:outputLabel value="Total:" />
+		<h:inputText id="txtTotal" name="txtTotal"
+					value="R$" />
+    </h:panelGrid>
+    <h:panelGrid columns="3">
+				<p:commandButton value="Fechar Compra" action="#{VendaMB.inserir}" />
+				<p:commandButton value="Cancelar" />
+			</h:panelGrid>
+    </p:fieldset>
+ </h:form>
+	</ui:define>
+
+</ui:composition>

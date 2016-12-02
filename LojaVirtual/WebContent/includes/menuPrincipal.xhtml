@@ -6,12 +6,16 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:form>
+	<div id="menu" style="background-color: #F0EFED;">
+	<h:graphicImage library="img" name="logo.png" />
+	<h:form style="float: right; padding: 20px;">
 		<p:menubar>
 			<p:menuitem value="Home"  action="index.xhtml" ajax="false"/>
 			<p:menuitem value="Produtos" action="produto.xhtml" ajax="false"/>
+			<p:menuitem value="Comprar" action="venda.xhtml" ajax="false"/>
 			<p:menuitem value="Fornecedores" action="fornecedor.xhtml" ajax="false"/>
 			<p:menuitem value="Help" action="help.xhtml" ajax="false"/>
 		</p:menubar>
 	</h:form>
+	</div>
 </ui:composition>
